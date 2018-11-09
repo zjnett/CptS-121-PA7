@@ -18,6 +18,6 @@ typedef struct {
 } Card;
 
 void shuffle(int wDeck[][13]);
-void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[]);
+void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card hand[]);
 
 #endif

@@ -24,14 +24,14 @@ void shuffle(int wDeck[][13])
 }
 
 /* deal cards in deck */
-void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[])
+void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card hand[])
 {
 	int row = 0;    /* row number */
 	int column = 0; /*column number */
 	int card = 0;   /* card counter */
 
-					/* deal each of the 52 cards */
-	for (card = 1; card <= 52; card++)
+					/* deals 5 cards */
+	for (card = 1; card <= 5; card++)
 	{
 		/* loop through rows of wDeck */
 		for (row = 0; row <= 3; row++)
@@ -43,6 +43,8 @@ void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[])
 				if (wDeck[row][column] == card)
 				{
 					printf("%5s of %-8s%c", wFace[column], wSuit[row], card % 2 == 0 ? '\n' : '\t');
+					hand[card].suitIndex = row;
+					hand[card].faceIndex = column;
 				}
 			}
 		}

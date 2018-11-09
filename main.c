@@ -11,10 +11,14 @@ int main(void) {
 	/* initalize deck array */
 	int deck[4][13] = { 0 };
 
+	//Card array initialization, size 6 to account for 1-5 index cycling in provided code
+	Card playerOneHand[6] = { 0 };
+	Card playerTwoHand[6] = { 0 };
+
 	srand((unsigned)time(NULL)); /* seed random-number generator */
 
 	shuffle(deck);
-	deal(deck, face, suit);
+	deal(deck, face, suit, playerOneHand);
 
 	return 0;
 }
