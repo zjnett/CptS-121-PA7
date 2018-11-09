@@ -11,6 +11,12 @@ Purpose: An implementation of 5-Card-Draw Poker.
 #define FUNCTIONS_H
 #include <stdio.h>
 
+//Datatype Initialization
+typedef struct {
+	int faceIndex;
+	int suitIndex;
+} Card;
+
 void shuffle(int wDeck[][13]);
 void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[]);
 
