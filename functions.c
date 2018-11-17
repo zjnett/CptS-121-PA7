@@ -233,3 +233,8 @@ int evaluateHand(Card hand[]) {
 		points += 6;
 	return points;
 }
+
+void pressKeyToContinue(void) {
+	printf("Press any key to continue...");
+	getch();
+}

@@ -33,5 +33,6 @@ void printMenu(void);
 char handleCharInput(void);
 void clearScreen(void);
 int evaluateHand(Card hand[]);
+void pressKeyToContinue(void);
 
 #endif
