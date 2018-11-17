@@ -11,7 +11,8 @@ Purpose: An implementation of 5-Card-Draw Poker.
 #define FUNCTIONS_H
 #include <stdio.h>
 #define HAND_SIZE 6
-
+#define FACE_TYPES 13
+#define SUIT_TYPES 4
 //Datatype Initialization
 typedef struct {
 	int faceIndex;

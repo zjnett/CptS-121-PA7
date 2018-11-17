@@ -53,7 +53,7 @@ void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card 
 
 void calcNumTimes(Card hand[], int numTimes[13]) {
 	//Reinitializes array
-	for (int i = 0; i < 13; i++) {
+	for (int i = 0; i < FACE_TYPES; i++) {
 		numTimes[i] = 0;
 	}
 
@@ -106,7 +106,7 @@ void calcNumTimes(Card hand[], int numTimes[13]) {
 int containsPair(Card hand[], int numTimes[13]) {
 	//Two of the same face indices in hand array
 	//Iterate through all possible options for face values (indices 0-12)
-	for (int i = 0; i < 13; i++) {
+	for (int i = 0; i < FACE_TYPES; i++) {
 		if (numTimes[i] == 2) {
 			return 1;
 		}
@@ -117,7 +117,7 @@ int containsPair(Card hand[], int numTimes[13]) {
 int containsTwoPair(Card hand[], int numTimes[13]) {
 	int count = 0;
 	//Two of the same face indices in hand array... twice
-	for (int i = 0; i < 13; i++) {
+	for (int i = 0; i < FACE_TYPES; i++) {
 		if (numTimes[i] == 2) {
 			count++;
 		}
@@ -129,7 +129,7 @@ int containsTwoPair(Card hand[], int numTimes[13]) {
 }
 
 int containsThreeOfKind(Card hand[], int numTimes[13]) {
-	for (int i = 0; i < 13; i++) {
+	for (int i = 0; i < FACE_TYPES; i++) {
 		if (numTimes[i] == 3) {
 			return 1;
 		}
