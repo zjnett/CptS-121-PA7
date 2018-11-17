@@ -128,9 +128,18 @@ int containsTwoPair(Card hand[], int numTimes[13]) {
 	return 0;
 }
 
-int containsThreeOfKind(Card hand[], int numTimes[13]) {
+int containsThreeOfAKind(Card hand[], int numTimes[13]) {
 	for (int i = 0; i < FACE_TYPES; i++) {
 		if (numTimes[i] == 3) {
+			return 1;
+		}
+	}
+	return 0;
+}
+
+int containsFourOfAKind(Card hand[], int numTimes[13]) {
+	for (int i = 0; i < FACE_TYPES; i++) {
+		if (numTimes[i] == 4) {
 			return 1;
 		}
 	}
