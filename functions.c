@@ -174,3 +174,21 @@ int containsFlush(Card hand[], int suitCount[4]) {
 	}
 	return 0;
 }
+
+int containsStraight(Card hand[], int numTimes[13]) {
+	int count = 0;
+	//Hand is of 5 consecutive face values
+	//There should be a row of five 1's in numTimes consecutively
+	for (int i = 0; i < FACE_TYPES; i++) {
+		if (numTimes[i] == 1) {
+			count++;
+		} else {
+			count = 0;
+		}
+	}
+
+	if (count == 5) {
+		return 1;
+	}
+	return 0;
+}
