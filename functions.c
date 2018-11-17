@@ -104,12 +104,26 @@ void calcNumTimes(Card hand[], int numTimes[13]) {
 }
 
 int containsPair(Card hand[], int numTimes[13]) {
-	//Two of the same face indexes in hand array
+	//Two of the same face indices in hand array
 	//Iterate through all possible options for face values (indices 0-12)
 	for (int i = 0; i < 13; i++) {
 		if (numTimes[i] == 2) {
 			return 1;
 		}
+	}
+	return 0;
+}
+
+int containsTwoPair(Card hand[], int numTimes[13]) {
+	int count = 0;
+	//Two of the same face indices in hand array... twice
+	for (int i = 0; i < 13; i++) {
+		if (numTimes[i] == 2) {
+			count++;
+		}
+	}
+	if (count == 2) {
+		return 1;
 	}
 	return 0;
 }

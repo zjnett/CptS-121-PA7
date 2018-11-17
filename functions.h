@@ -22,5 +22,6 @@ void shuffle(int wDeck[][13]);
 void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card hand[]);
 void calcNumTimes(Card hand[], int numTimes[13]);
 int containsPair(Card hand[], int numTimes[13]);
+int containsTwoPair(Card hand[], int numTimes[13]);
 
 #endif
