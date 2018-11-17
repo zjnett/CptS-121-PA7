@@ -167,5 +167,10 @@ void calcCountSuit(Card hand[], int suitCount[4]) {
 
 int containsFlush(Card hand[], int suitCount[4]) {
 	//Hand contains 5 of the same suit
+	for (int i = 0; i < SUIT_TYPES; i++) {
+		if (suitCount[i] == 5) {
+			return 1;
+		}
+	}
 	return 0;
 }
