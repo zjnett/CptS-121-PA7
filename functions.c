@@ -127,3 +127,12 @@ int containsTwoPair(Card hand[], int numTimes[13]) {
 	}
 	return 0;
 }
+
+int containsThreeOfKind(Card hand[], int numTimes[13]) {
+	for (int i = 0; i < 13; i++) {
+		if (numTimes[i] == 3) {
+			return 1;
+		}
+	}
+	return 0;
+}
