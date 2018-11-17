@@ -199,3 +199,10 @@ void printMenu(void) {
 	printf("[R]ules\n");
 	printf("[Q]uit\n");
 }
+
+char handleCharInput(void) {
+	char in = '\0';
+	scanf(" %c", &in);
+	in = toupper(in);
+	return in;
+}
