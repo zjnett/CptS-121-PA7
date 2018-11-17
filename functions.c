@@ -30,8 +30,8 @@ void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card 
 	int column = 0; /*column number */
 	int card = 0;   /* card counter */
 
-					/* deals 10 cards */
-	for (card = 1; card <= 10; card+=2)
+					/* deals 5 cards */
+	for (card = 1; card <= 5; card++)
 	{
 		/* loop through rows of wDeck */
 		for (row = 0; row <= 3; row++)
@@ -44,9 +44,7 @@ void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card 
 				{
 					printf("%5s of %-8s%c", wFace[column], wSuit[row], card % 2 == 0 ? '\n' : '\t');
 					hand[card].suitIndex = row;
-					secondHand[card].suitIndex = row + 1;
 					hand[card].faceIndex = column;
-					secondHand[card].faceIndex = column + 1;
 				}
 			}
 		}
@@ -60,7 +58,7 @@ void calcNumTimes(Card hand[], int numTimes[13]) {
 	}
 
 	//Populate numTimes array with count of every specific face card
-	for (int i = 0; i < HAND_SIZE; i++) {
+	for (int i = 1; i < HAND_SIZE; i++) {
 		switch (hand[i].faceIndex) {
 		case 0: //Ace
 			numTimes[0]++;
@@ -149,7 +147,7 @@ int containsFourOfAKind(Card hand[], int numTimes[13]) {
 }
 
 void calcCountSuit(Card hand[], int suitCount[4]) {
-	for (int i = 0; i < HAND_SIZE; i++) {
+	for (int i = 1; i < HAND_SIZE; i++) {
 		switch (hand[i].suitIndex) {
 		case 0:
 			suitCount[0]++;
