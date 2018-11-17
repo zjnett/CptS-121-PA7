@@ -10,6 +10,7 @@ Purpose: An implementation of 5-Card-Draw Poker.
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 #include <stdio.h>
+#define HAND_SIZE 6
 
 //Datatype Initialization
 typedef struct {
@@ -19,5 +20,6 @@ typedef struct {
 
 void shuffle(int wDeck[][13]);
 void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card hand[]);
+int containsPair(Card hand[]);
 
 #endif

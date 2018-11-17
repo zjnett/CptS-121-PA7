@@ -51,59 +51,15 @@ void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card 
 	}
 }
 
-int containsPair(Card hand[]) {
-	//Two of the same face indexes in hand array
-	int numTimes[13] = { 0 };
-	//Populate numTimes array with count of every specific face card
-	for (int i = 0; i < HAND_SIZE; i++) {
-		switch (hand[i].faceIndex) {
-		case 0: //Ace
-			numTimes[0]++;
-			break;
-		case 1: //Deuce
-			numTimes[1]++;
-			break;
-		case 3: //Three
-			numTimes[2]++;
-			break;
-		case 4: //Four
-			numTimes[3]++;
-			break;
-		case 5: //Five
-			numTimes[4]++;
-			break;
-		case 6: //Six
-			numTimes[5]++;
-			break;
-		case 7: //Seven
-			numTimes[6]++;
-			break;
-		case 8: //Eight
-			numTimes[7]++;
-			break;
-		case 9: //Nine
-			numTimes[8]++;
-			break;
-		case 10: //Ten
-			numTimes[9]++;
-			break;
-		case 11: //Jack
-			numTimes[10]++;
-			break;
-		case 12: //Queen
-			numTimes[11]++;
-			break;
-		case 13: //King
-			numTimes[12]++;
-			break;
-		}
+void containsPair(Card hand[]) {
+	int faceNums[6] = { 0 };
+	for (int i = 1; i < HAND_SIZE; i++) {
+		faceNums[i] = hand[i].faceIndex;
 	}
 
-	//Iterate through all possible options for face values (indices 0-12)
-	for (int i = 0; i < 13; i++) {
-		if (numTimes[i] == 2) {
-			return 1;
+	for (int i = 1; i < HAND_SIZE; i++) {
+		if () {
+
 		}
 	}
-	return 0;
 }
