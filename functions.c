@@ -52,6 +52,11 @@ void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card 
 }
 
 void calcNumTimes(Card hand[], int numTimes[13]) {
+	//Reinitializes array
+	for (int i = 0; i < 13; i++) {
+		numTimes[i] = 0;
+	}
+
 	//Populate numTimes array with count of every specific face card
 	for (int i = 0; i < HAND_SIZE; i++) {
 		switch (hand[i].faceIndex) {
