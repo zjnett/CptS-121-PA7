@@ -29,5 +29,6 @@ int containsFourOfAKind(Card hand[], int numTimes[13]);
 void calcCountSuit(Card hand[], int suitCount[4]);
 int containsFlush(Card hand[], int suitCount[4]);
 int containsStraight(Card hand[], int numTimes[13]);
+void printMenu(void);
 
 #endif

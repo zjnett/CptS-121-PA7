@@ -192,3 +192,10 @@ int containsStraight(Card hand[], int numTimes[13]) {
 	}
 	return 0;
 }
+
+void printMenu(void) {
+	printf("--- 5 CARD DRAW POKER ---\n");
+	printf("[N]ew Game\n");
+	printf("[R]ules\n");
+	printf("[Q]uit\n");
+}
