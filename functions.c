@@ -145,3 +145,27 @@ int containsFourOfAKind(Card hand[], int numTimes[13]) {
 	}
 	return 0;
 }
+
+void calcCountSuit(Card hand[], int suitCount[4]) {
+	for (int i = 0; i < HAND_SIZE; i++) {
+		switch (hand[i].suitIndex) {
+		case 0:
+			suitCount[0]++;
+			break;
+		case 1:
+			suitCount[1]++;
+			break;
+		case 2:
+			suitCount[2]++;
+			break;
+		case 3:
+			suitCount[3]++;
+			break;
+		}
+	}
+}
+
+int containsFlush(Card hand[], int suitCount[4]) {
+	//Hand contains 5 of the same suit
+	return 0;
+}
