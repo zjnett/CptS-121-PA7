@@ -31,5 +31,6 @@ int containsFlush(Card hand[], int suitCount[4]);
 int containsStraight(Card hand[], int numTimes[13]);
 void printMenu(void);
 char handleCharInput(void);
+void clearScreen(void);
 
 #endif

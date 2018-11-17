@@ -206,3 +206,7 @@ char handleCharInput(void) {
 	in = toupper(in);
 	return in;
 }
+
+void clearScreen(void) {
+	system("cls");
+}
