@@ -235,6 +235,5 @@ int evaluateHand(Card hand[]) {
 }
 
 void pressKeyToContinue(void) {
-	printf("Press any key to continue...");
-	getch();
+	system("pause");
 }

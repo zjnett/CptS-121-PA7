@@ -29,6 +29,7 @@ int main(void) {
 				shuffle(deck);
 				deal(deck, face, suit, playerOneHand, playerTwoHand);
 				printf("Points: %d\n", evaluateHand(playerOneHand));
+				pressKeyToContinue();
 			}
 		} else if (input == 'R') {
 			//Rules processings
