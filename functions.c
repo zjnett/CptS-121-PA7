@@ -24,14 +24,14 @@ void shuffle(int wDeck[][13])
 }
 
 /* deal cards in deck */
-void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card hand[])
+void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card hand[], Card secondHand[])
 {
 	int row = 0;    /* row number */
 	int column = 0; /*column number */
 	int card = 0;   /* card counter */
 
-					/* deals 5 cards */
-	for (card = 1; card <= 5; card++)
+					/* deals 10 cards */
+	for (card = 1; card <= 10; card+=2)
 	{
 		/* loop through rows of wDeck */
 		for (row = 0; row <= 3; row++)
@@ -44,7 +44,9 @@ void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card 
 				{
 					printf("%5s of %-8s%c", wFace[column], wSuit[row], card % 2 == 0 ? '\n' : '\t');
 					hand[card].suitIndex = row;
+					secondHand[card].suitIndex = row + 1;
 					hand[card].faceIndex = column;
+					secondHand[card].faceIndex = column + 1;
 				}
 			}
 		}

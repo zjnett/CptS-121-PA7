@@ -26,7 +26,7 @@ int main(void) {
 		if (input == 'N') {
 			//New game processing
 			shuffle(deck);
-			deal(deck, face, suit, playerOneHand);
+			deal(deck, face, suit, playerOneHand, playerTwoHand);
 		} else if (input == 'R') {
 			//Rules processings
 		} else if (input == 'Q') {
