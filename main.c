@@ -15,10 +15,24 @@ int main(void) {
 	Card playerOneHand[6] = { 0 };
 	Card playerTwoHand[6] = { 0 };
 
+	int running = 1;
+	char input = '\0';
+
 	srand((unsigned)time(NULL)); /* seed random-number generator */
-
-	shuffle(deck);
-	deal(deck, face, suit, playerOneHand);
-
+	
+	do {
+		printMenu();
+		input = handleCharInput();
+		if (input == 'N') {
+			//New game processing
+			shuffle(deck);
+			deal(deck, face, suit, playerOneHand);
+		} else if (input == 'R') {
+			//Rules processings
+		} else if (input == 'Q') {
+			running = 0;
+		}
+	} while (running);
+	
 	return 0;
 }
