@@ -32,5 +32,6 @@ int containsStraight(Card hand[], int numTimes[13]);
 void printMenu(void);
 char handleCharInput(void);
 void clearScreen(void);
+int evaluateHand(Card hand[]);
 
 #endif

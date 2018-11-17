@@ -212,3 +212,26 @@ char handleCharInput(void) {
 void clearScreen(void) {
 	system("cls");
 }
+
+//Function to evaluate the parameter hand. It generates and returns a point matrix based on
+//aspects of the hand.
+int evaluateHand(Card hand[]) {
+	int points = 0;
+	int numTimes[13], suitCount[4];
+	calcNumTimes(hand, numTimes);
+	calcCountSuit(hand, suitCount);
+	//A pair is worth 1, two pairs is worth 2, three of a kind is worth 3, straight is worth 4, flush 5, four of a kind 6
+	if (containsPair(hand, numTimes))
+		points++;
+	if (containsTwoPair(hand, numTimes))
+		points += 2;
+	if (containsThreeOfAKind(hand, numTimes))
+		points += 3;
+	if (containsStraight(hand, numTimes))
+		points += 4;
+	if (containsFlush(hand, suitCount))
+		points += 5;
+	if (containsFourOfAKind(hand, numTimes))
+		points += 6;
+	return points;
+}

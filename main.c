@@ -27,6 +27,7 @@ int main(void) {
 			//New game processing
 			shuffle(deck);
 			deal(deck, face, suit, playerOneHand, playerTwoHand);
+			printf("Points: %d\n", evaluateHand(playerOneHand));
 		} else if (input == 'R') {
 			//Rules processings
 		} else if (input == 'Q') {
