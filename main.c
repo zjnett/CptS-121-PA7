@@ -27,12 +27,15 @@ int main(void) {
 			//New game processing
 			while (numHands < 10) {
 				shuffle(deck);
-				deal(deck, face, suit, playerOneHand, playerTwoHand);
+				deal(deck, face, suit, playerOneHand);
+				//deal(deck, face, suit, playerTwoHand);
 				printf("Points: %d\n", evaluateHand(playerOneHand));
 				pressKeyToContinue();
+				clearScreen();
 			}
 		} else if (input == 'R') {
 			//Rules processings
+			clearScreen();
 		} else if (input == 'Q') {
 			running = 0;
 		}

@@ -24,7 +24,7 @@ void shuffle(int wDeck[][13])
 }
 
 /* deal cards in deck */
-void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card hand[], Card secondHand[])
+void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card hand[])
 {
 	int row = 0;    /* row number */
 	int column = 0; /*column number */
@@ -194,10 +194,18 @@ int containsStraight(Card hand[], int numTimes[13]) {
 }
 
 void printMenu(void) {
-	printf("--- 5 CARD DRAW POKER ---\n");
-	printf("[N]ew Game\n");
-	printf("[R]ules\n");
-	printf("[Q]uit\n");
+	//ASCII art generated at http://patorjk.com/software/taag/
+	printf(" ########     ######     ###    ########  ########     ########  ########     ###    ##      ##\n");
+	printf(" ##          ##    ##   ## ##   ##     ## ##     ##    ##     ## ##     ##   ## ##   ##  ##  ##\n");
+	printf(" ##          ##        ##   ##  ##     ## ##     ##    ##     ## ##     ##  ##   ##  ##  ##  ##\n");
+	printf(" #######     ##       ##     ## ########  ##     ##    ##     ## ########  ##     ## ##  ##  ##\n");
+	printf("       ##    ##       ######### ##   ##   ##     ##    ##     ## ##   ##   ######### ##  ##  ##\n");
+	printf(" ##    ##    ##    ## ##     ## ##    ##  ##     ##    ##     ## ##    ##  ##     ## ##  ##  ##\n");
+	printf("  ######      ######  ##     ## ##     ## ########     ########  ##     ## ##     ##  ###  ### \n");
+	printf("								 implemented by Zach Nett\n");
+	printf(" [N]ew Game\n");
+	printf(" [R]ules\n");
+	printf(" [Q]uit\n");
 }
 
 char handleCharInput(void) {
