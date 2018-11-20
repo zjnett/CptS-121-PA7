@@ -14,7 +14,7 @@ int main(void) {
 	//Card array initialization, size 6 to account for 1-5 index cycling in provided code
 	Card playerOneHand[6] = { 0 };
 	Card playerTwoHand[6] = { 0 };
-	int numHands = 0, playerOneScore = 0, playerTwoScore = 0;
+	int numHands = 0, playerOneScore = 0, playerTwoScore = 0, numCardsToDraw = 0;
 	int running = 1;
 	char input = '\0';
 
@@ -37,6 +37,15 @@ int main(void) {
 				playerTwoScore = evaluateHand(playerTwoHand);
 				
 				printf("Points: %d\n", playerOneScore);
+				printf("Would you like to redraw cards? Y\N: ");
+				input = handleCharInput();
+				if (input == 'Y') {
+					printf("How many cards would you like to redraw?: ");
+					scanf("%d", &numCardsToDraw);
+					drawNCardsPlayer(playerOneHand, numCardsToDraw, deck);
+				}
+
+				playerOneScore = evaluateHand(playerOneHand);
 
 				if (playerOneScore > playerTwoScore) {
 					//player 1 has the better hand
@@ -45,8 +54,7 @@ int main(void) {
 				else if (playerTwoScore > playerOneScore) {
 					//player 2 has the better hand
 
-				}
-				else {
+				} else {
 					//Players hands are equal
 
 				}

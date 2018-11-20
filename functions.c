@@ -281,3 +281,37 @@ void dealerAI(Card hand[], int playerOneScore, int playerTwoScore) {
 	}
 	
 }
+
+void drawNCards(Card hand[], int n) {
+
+}
+
+void drawNCardsPlayer(Card hand[], int n, int deck[4][13]) {
+	int input = 0, rowCount = 3, colCount = 12;
+	for (int i = 0; i < n; i++) {
+		printf("What card would you like to redraw? 1-5: ");
+		scanf("%d", &input);
+		switch (input) {
+		case 1:
+			hand[1].faceIndex = deck[colCount--];
+			hand[1].suitIndex = deck[rowCount--];
+			break;
+		case 2:
+			hand[2].faceIndex = deck[colCount--];
+			hand[2].suitIndex = deck[rowCount--];
+			break;
+		case 3:
+			hand[3].faceIndex = deck[colCount--];
+			hand[3].suitIndex = deck[rowCount--];
+			break;
+		case 4:
+			hand[4].faceIndex = deck[colCount--];
+			hand[4].suitIndex = deck[rowCount--];
+			break;
+		case 5:
+			hand[5].faceIndex = deck[colCount--];
+			hand[5].suitIndex = deck[rowCount--];
+			break;
+		}
+	}
+}
