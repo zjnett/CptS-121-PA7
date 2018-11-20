@@ -42,12 +42,18 @@ void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card 
 				/* if slot contains current card, display card */
 				if (wDeck[row][column] == card)
 				{
-					printf("%5s of %-8s%c", wFace[column], wSuit[row], card % 2 == 0 ? '\n' : '\t');
+					//printf("%5s of %-8s%c", wFace[column], wSuit[row], card % 2 == 0 ? '\n' : '\t');
 					hand[card].suitIndex = row;
 					hand[card].faceIndex = column;
 				}
 			}
 		}
+	}
+}
+
+void printHand(const char *wFace[], const char *wSuit[], Card hand[]) {
+	for (int i = 1; i <= 5; i++) {
+		printf(" %5s of %-8s%c", wFace[hand[i].faceIndex], wSuit[hand[i].suitIndex], i % 2 == 0 ? '\n' : '\t');
 	}
 }
 
@@ -188,7 +194,7 @@ int containsStraight(Card hand[], int numTimes[13]) {
 	}
 
 	if (count == 5) {
-		return 1;
+		return 1;	
 	}
 	return 0;
 }

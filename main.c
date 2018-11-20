@@ -28,10 +28,12 @@ int main(void) {
 			while (numHands < 10) {
 				shuffle(deck);
 				deal(deck, face, suit, playerOneHand);
+				printHand(face, suit, playerOneHand);
 				//deal(deck, face, suit, playerTwoHand);
 				printf("Points: %d\n", evaluateHand(playerOneHand));
 				pressKeyToContinue();
 				clearScreen();
+				numHands++;
 			}
 		} else if (input == 'R') {
 			//Rules processings
