@@ -14,7 +14,7 @@ int main(void) {
 	//Card array initialization, size 6 to account for 1-5 index cycling in provided code
 	Card playerOneHand[6] = { 0 };
 	Card playerTwoHand[6] = { 0 };
-	int numHands = 0;
+	int numHands = 0, playerOneScore = 0, playerTwoScore = 0;
 	int running = 1;
 	char input = '\0';
 
@@ -26,13 +26,15 @@ int main(void) {
 		if (input == 'N') {
 			//New game processing
 			while (numHands < 10) {
+				clearScreen();
 				shuffle(deck);
 				deal(deck, face, suit, playerOneHand);
 				printHand(face, suit, playerOneHand);
-				//deal(deck, face, suit, playerTwoHand);
-				printf("Points: %d\n", evaluateHand(playerOneHand));
+				deal(deck, face, suit, playerTwoHand);
+				playerOneScore = evaluateHand(playerOneHand);
+				playerTwoScore = evaluateHand(playerTwoHand);
+				printf("Points: %d\n", playerOneScore);
 				pressKeyToContinue();
-				clearScreen();
 				reinitializeArrays(playerOneHand, playerTwoHand, deck);
 				numHands++;
 			}

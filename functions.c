@@ -235,8 +235,8 @@ int evaluateHand(Card hand[]) {
 	//A pair is worth 1, two pairs is worth 2, three of a kind is worth 3, straight is worth 4, flush 5, four of a kind 6
 	if (containsPair(hand, numTimes))
 		points++;
-	if (containsTwoPair(hand, numTimes))
-		points += 2;
+	if (containsTwoPair(hand, numTimes) && containsPair(hand, numTimes))
+		points++;
 	if (containsThreeOfAKind(hand, numTimes))
 		points += 3;
 	if (containsStraight(hand, numTimes))
