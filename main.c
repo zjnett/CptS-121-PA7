@@ -15,6 +15,7 @@ int main(void) {
 	Card playerOneHand[6] = { 0 };
 	Card playerTwoHand[6] = { 0 };
 	int numHands = 0, playerOneScore = 0, playerTwoScore = 0, numCardsToDraw = 0;
+	int rowCount = 3, colCount = 12;
 	int running = 1;
 	char input = '\0';
 
@@ -42,7 +43,7 @@ int main(void) {
 				if (input == 'Y') {
 					printf("How many cards would you like to redraw?: ");
 					scanf("%d", &numCardsToDraw);
-					drawNCardsPlayer(playerOneHand, numCardsToDraw, deck);
+					drawNCardsPlayer(playerOneHand, numCardsToDraw, deck, &rowCount, &colCount);
 				}
 
 				playerOneScore = evaluateHand(playerOneHand);

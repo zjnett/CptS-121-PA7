@@ -267,50 +267,69 @@ void reinitializeArrays(Card handOne[], Card handTwo[], int deck[4][13]) {
 	}
 }
 
-void dealerAI(Card hand[], int playerOneScore, int playerTwoScore) {
+int dealerAI(Card hand[], int playerOneScore, int playerTwoScore) {
 	if (playerTwoScore <= playerOneScore) {
 		if (playerTwoScore < 3) {
 			//draw 1 card
+			return 1;
 		}
 		else if (playerTwoScore < 2) {
 			//draw 2 cards
+			return 2;
 		}
 		else if (playerTwoScore < 1) {
 			//draw 3 cards
+			return 3;
 		}
 	}
-	
+	return 0;
 }
 
-void drawNCards(Card hand[], int n) {
-
+void drawNCards(Card hand[], int n, int deck[4][13], int rowCount, int colCount) {
+	int usedIndices[6] = { 0 };
+	int randIndex = 0, generating = 1;
+	for (int i = 0; i < n; i++) {
+		while (generating) {
+			randIndex = rand() % 5 + 1;
+			for (int j = 1; j < 6; j++) {
+				if (randIndex == j && usedIndices[randIndex] == 1) {
+					generating = 1;
+					break;
+				}
+				generating = 0;
+			}
+		}
+		usedIndices[randIndex] = 1;
+		hand[randIndex].faceIndex = deck[colCount--];
+		hand[randIndex].suitIndex = deck[rowCount--];
+	}
 }
 
-void drawNCardsPlayer(Card hand[], int n, int deck[4][13]) {
+void drawNCardsPlayer(Card hand[], int n, int deck[4][13], int *rowCount, int *colCount) {
 	int input = 0, rowCount = 3, colCount = 12;
 	for (int i = 0; i < n; i++) {
 		printf("What card would you like to redraw? 1-5: ");
 		scanf("%d", &input);
 		switch (input) {
 		case 1:
-			hand[1].faceIndex = deck[colCount--];
-			hand[1].suitIndex = deck[rowCount--];
+			hand[1].faceIndex = deck[*colCount--];
+			hand[1].suitIndex = deck[*rowCount--];
 			break;
 		case 2:
-			hand[2].faceIndex = deck[colCount--];
-			hand[2].suitIndex = deck[rowCount--];
+			hand[2].faceIndex = deck[*colCount--];
+			hand[2].suitIndex = deck[*rowCount--];
 			break;
 		case 3:
-			hand[3].faceIndex = deck[colCount--];
-			hand[3].suitIndex = deck[rowCount--];
+			hand[3].faceIndex = deck[*colCount--];
+			hand[3].suitIndex = deck[*rowCount--];
 			break;
 		case 4:
-			hand[4].faceIndex = deck[colCount--];
-			hand[4].suitIndex = deck[rowCount--];
+			hand[4].faceIndex = deck[*colCount--];
+			hand[4].suitIndex = deck[*rowCount--];
 			break;
 		case 5:
-			hand[5].faceIndex = deck[colCount--];
-			hand[5].suitIndex = deck[rowCount--];
+			hand[5].faceIndex = deck[*colCount--];
+			hand[5].suitIndex = deck[*rowCount--];
 			break;
 		}
 	}
