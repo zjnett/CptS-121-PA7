@@ -31,9 +31,26 @@ int main(void) {
 				deal(deck, face, suit, playerOneHand);
 				printHand(face, suit, playerOneHand);
 				deal(deck, face, suit, playerTwoHand);
+
+				//Initial evaluation
 				playerOneScore = evaluateHand(playerOneHand);
 				playerTwoScore = evaluateHand(playerTwoHand);
+				
 				printf("Points: %d\n", playerOneScore);
+
+				if (playerOneScore > playerTwoScore) {
+					//player 1 has the better hand
+
+				}
+				else if (playerTwoScore > playerOneScore) {
+					//player 2 has the better hand
+
+				}
+				else {
+					//Players hands are equal
+
+				}
+
 				pressKeyToContinue();
 				reinitializeArrays(playerOneHand, playerTwoHand, deck);
 				numHands++;

@@ -266,3 +266,18 @@ void reinitializeArrays(Card handOne[], Card handTwo[], int deck[4][13]) {
 		}
 	}
 }
+
+void dealerAI(Card hand[], int playerOneScore, int playerTwoScore) {
+	if (playerTwoScore <= playerOneScore) {
+		if (playerTwoScore < 3) {
+			//draw 1 card
+		}
+		else if (playerTwoScore < 2) {
+			//draw 2 cards
+		}
+		else if (playerTwoScore < 1) {
+			//draw 3 cards
+		}
+	}
+	
+}
