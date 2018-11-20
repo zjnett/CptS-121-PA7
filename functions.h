@@ -35,5 +35,6 @@ char handleCharInput(void);
 void clearScreen(void);
 int evaluateHand(Card hand[]);
 void pressKeyToContinue(void);
+void reinitializeArrays(Card handOne[], Card handTwo[], int deck[4][13]);
 
 #endif

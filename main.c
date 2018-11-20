@@ -33,6 +33,7 @@ int main(void) {
 				printf("Points: %d\n", evaluateHand(playerOneHand));
 				pressKeyToContinue();
 				clearScreen();
+				reinitializeArrays(playerOneHand, playerTwoHand, deck);
 				numHands++;
 			}
 		} else if (input == 'R') {

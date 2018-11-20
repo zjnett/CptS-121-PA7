@@ -251,3 +251,18 @@ int evaluateHand(Card hand[]) {
 void pressKeyToContinue(void) {
 	system("pause");
 }
+
+void reinitializeArrays(Card handOne[], Card handTwo[], int deck[4][13]) {
+	for (int i = 0; i < 6; i++) {
+		handOne[i].faceIndex = 0;
+		handOne[i].suitIndex = 0;
+		handTwo[i].faceIndex = 0;
+		handTwo[i].suitIndex = 0;
+	}
+
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 13; j++) {
+			deck[i][j] = 0;
+		}
+	}
+}
