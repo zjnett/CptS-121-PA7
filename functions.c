@@ -53,7 +53,7 @@ void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card 
 
 void printHand(const char *wFace[], const char *wSuit[], Card hand[]) {
 	for (int i = 1; i <= 5; i++) {
-		printf(" %5s of %-8s%c", wFace[hand[i].faceIndex], wSuit[hand[i].suitIndex], i % 2 == 0 ? '\n' : '\t');
+		printf("%d: %5s of %-8s%c", i, wFace[hand[i].faceIndex], wSuit[hand[i].suitIndex], i % 2 == 0 ? '\n' : '\t');
 	}
 }
 
@@ -306,7 +306,7 @@ void drawNCards(Card hand[], int n, int deck[4][13], int rowCount, int colCount)
 }
 
 void drawNCardsPlayer(Card hand[], int n, int deck[4][13], int *rowCount, int *colCount) {
-	int input = 0, rowCount = 3, colCount = 12;
+	int input = 0;
 	for (int i = 0; i < n; i++) {
 		printf("What card would you like to redraw? 1-5: ");
 		scanf("%d", &input);
