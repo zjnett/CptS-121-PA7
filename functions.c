@@ -59,12 +59,17 @@ void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card 
 	}
 }
 
+//Function printHand, no return, parameters string arrays wFace and Wsuit, array of Cards.
+//Removed print functionality from deal function and labeled individual indices for a hand.
 void printHand(const char *wFace[], const char *wSuit[], Card hand[]) {
 	for (int i = 1; i <= 5; i++) {
 		printf("%d: %5s of %-8s%c", i, wFace[hand[i].faceIndex], wSuit[hand[i].suitIndex], i % 2 == 0 ? '\n' : '\t');
 	}
 }
 
+//Function calcNumTimes, no return, parameters array of Card objects hand and array of integers numTimes.
+//Populates numTimes array with specific count of every face card.
+//For example, numTimes at index 0 will contain 4 if there are 4 aces in a hand.
 void calcNumTimes(Card hand[], int numTimes[13]) {
 	//Reinitializes array
 	for (int i = 0; i < FACE_TYPES; i++) {
@@ -117,6 +122,9 @@ void calcNumTimes(Card hand[], int numTimes[13]) {
 	}
 }
 
+//Function containsPair, return integer, parameters array of Card objects hand and array of integers numTimes.
+//Prerequisite: calcNumTimes has been called
+//Sees if numTimes contains a 2 (has a pair), returns 1 if so and 0 if not.
 int containsPair(Card hand[], int numTimes[13]) {
 	//Two of the same face indices in hand array
 	//Iterate through all possible options for face values (indices 0-12)
@@ -128,6 +136,10 @@ int containsPair(Card hand[], int numTimes[13]) {
 	return 0;
 }
 
+//Function containsTwoPair, return integer, parameters array of Card objects hand and array of integers numTimes.
+//Prerequisite: calcNumTimes has been called
+//Essentially does the same logic as containsPair twice with an additional count variable for tracking, returning 1
+//if true, 0 if false.
 int containsTwoPair(Card hand[], int numTimes[13]) {
 	int count = 0;
 	//Two of the same face indices in hand array... twice
@@ -142,6 +154,9 @@ int containsTwoPair(Card hand[], int numTimes[13]) {
 	return 0;
 }
 
+//Function containsThreeOfAKind, return integer, parameters array of Card objects hand and array of integers numTimes.
+//Prerequisite: calcNumTimes has been called
+//Checks if numTimes contains a 3 (3 cards with same face value), returns 1 if so, 0 if not.
 int containsThreeOfAKind(Card hand[], int numTimes[13]) {
 	for (int i = 0; i < FACE_TYPES; i++) {
 		if (numTimes[i] == 3) {
@@ -151,6 +166,9 @@ int containsThreeOfAKind(Card hand[], int numTimes[13]) {
 	return 0;
 }
 
+//Function containsFourOfAKind, return integer, parameters array of Card objects hand and array of integers numTimes.
+//Prerequisite: calcNumTimes has been called
+//Checks if numTimes contains a 4 (4 cards with same face value), returns 1 if so, 0 if not.
 int containsFourOfAKind(Card hand[], int numTimes[13]) {
 	for (int i = 0; i < FACE_TYPES; i++) {
 		if (numTimes[i] == 4) {
@@ -160,6 +178,9 @@ int containsFourOfAKind(Card hand[], int numTimes[13]) {
 	return 0;
 }
 
+//Function calcCountSuit, no return, parameters array of Card objects hand and array of integers suitCount.
+//Populates suitCount array with count of each suit in the hand.
+//For example, suitCount at index 0 will contain 5 if all 5 cards in the hand are hearts.
 void calcCountSuit(Card hand[], int suitCount[4]) {
 	//Reinitializes array
 	for (int i = 0; i < SUIT_TYPES; i++) {
@@ -184,6 +205,10 @@ void calcCountSuit(Card hand[], int suitCount[4]) {
 	}
 }
 
+//Function containsFlush, return integer, parameters array of Card objects hand, array of integers suitCount
+//Prerequisite: calcCountSuit has been called
+//Checks if there is a 5 in suitCount array, or if all cards in the hand are of the same suit.
+//1 returned if found, 0 if not.
 int containsFlush(Card hand[], int suitCount[4]) {
 	//Hand contains 5 of the same suit
 	for (int i = 0; i < SUIT_TYPES; i++) {
@@ -194,6 +219,10 @@ int containsFlush(Card hand[], int suitCount[4]) {
 	return 0;
 }
 
+//Function containsStraight, return integer, parameters array of Card objects hand, array of integers numTimes
+//Prerequisite: calcNumTimes has been called
+//Checks if there are a row of five 1's in numTimes consecutively (hand contains 5 consecutive face values).
+//Returns 1 if found, returns 0 if not.
 int containsStraight(Card hand[], int numTimes[13]) {
 	int count = 0;
 	//Hand is of 5 consecutive face values
@@ -215,6 +244,8 @@ int containsStraight(Card hand[], int numTimes[13]) {
 	return 0;
 }
 
+//Function printMenu, no return, no parameters.
+//Prints out the menu using printf functions.
 void printMenu(void) {
 	//ASCII art generated at http://patorjk.com/software/taag/
 	printf(" ########     ######     ###    ########  ########     ########  ########     ###    ##      ##\n");
@@ -230,6 +261,8 @@ void printMenu(void) {
 	printf(" [Q]uit\n");
 }
 
+//Function handleCharInput, return character, no parameters.
+//Uses a scanf call to read in and return a character from user.
 char handleCharInput(void) {
 	char in = '\0';
 	scanf(" %c", &in);
@@ -237,10 +270,13 @@ char handleCharInput(void) {
 	return in;
 }
 
+//Function clearScreen, no return, no parameters.
+//Uses a system call to clear the screen. (Windows-specific.)
 void clearScreen(void) {
 	system("cls");
 }
 
+//Function evaluateHand, return integer, parameter array of Card objects hand.
 //Function to evaluate the parameter hand. It generates and returns a point matrix based on
 //aspects of the hand.
 int evaluateHand(Card hand[]) {
@@ -264,10 +300,14 @@ int evaluateHand(Card hand[]) {
 	return points;
 }
 
+//Function pressKeyToContinue, no return, no parameters.
+//Uses a system call to pause program execution. (Windows-specific.)
 void pressKeyToContinue(void) {
 	system("pause");
 }
 
+//Function reinitializeArrays, no return, parameters arrays of Card objects handOne and handTwo, 2D array of integers deck
+//Resets all values of arrays back to 0.
 void reinitializeArrays(Card handOne[], Card handTwo[], int deck[4][13]) {
 	for (int i = 0; i < 6; i++) {
 		handOne[i].faceIndex = 0;
@@ -283,6 +323,9 @@ void reinitializeArrays(Card handOne[], Card handTwo[], int deck[4][13]) {
 	}
 }
 
+//Function dealerAI, return integer, parameters array of Card objects hands, integers playerOneScore and playerTwoScore.
+//Prerequisite: evaluateHand called on both hands and stored.
+//Determines how many cards the dealer needs to pull based on current hand score.
 int dealerAI(Card hand[], int playerOneScore, int playerTwoScore) {
 	if (playerTwoScore <= playerOneScore) {
 		if (playerTwoScore < 3) {
@@ -301,6 +344,8 @@ int dealerAI(Card hand[], int playerOneScore, int playerTwoScore) {
 	return 0;
 }
 
+//Function drawNCards, no return, parameters array of Card objects hand and handTwo, integer n
+//Generates a random card and index for dealer to draw a card. This will repeat n times.
 void drawNCards(Card hand[], Card handTwo[], int n) {
 	int usedIndices[6] = { 0 };
 	int randIndex = 0, generating = 0, creatingCard = 0, face = 0, suit = 0;
@@ -331,6 +376,8 @@ void drawNCards(Card hand[], Card handTwo[], int n) {
 	}
 }
 
+//Function drawNCardsPlayer, array of Card objects hand and handTwo, integer n
+//Generates a random card to be drawn, requests which card to be drawn, replaces respective card in hand.
 void drawNCardsPlayer(Card hand[], Card handTwo[], int n) {
 	int input = 0, face = 0, suit = 0, generating = 0;
 	for (int i = 0; i < n; i++) {
@@ -368,6 +415,9 @@ void drawNCardsPlayer(Card hand[], Card handTwo[], int n) {
 	}
 }
 
+//Function ifCardHasBeenDrawn, return integer, parameters integers desiredFace and desiredSuit, array of Card objects handOne and handTwo.
+//Checks if the desiredFace and desiredSuit integers are already in handOne and handTwo, returns 1 if they are, 0 if not.
+//This is necessary because the D&D starter code does not modify the deck once a card has been dealt.
 int ifCardHasBeenDrawn(int desiredFace, int desiredSuit, Card handOne[], Card handTwo[]) {
 	//Check through first hand
 	for (int i = 1; i < 6; i++) {
@@ -378,6 +428,9 @@ int ifCardHasBeenDrawn(int desiredFace, int desiredSuit, Card handOne[], Card ha
 	return 0;
 }
 
+//Function generateCard, no return, parameters pointers to integer face and suit.
+//Generates a random number 0-12 and assigns it to indirect value of face pointer.
+//Generates a random number 0-3 and assigns it to indirect value of suit pointer.
 void generateCard(int *face, int *suit) {
 	*face = rand() % 13;
 	*suit = rand() % 4;

@@ -3,13 +3,18 @@ Programmer: Zach Nett
 Class: CptS 121 Fall 2018
 Date: November 7 2018
 Purpose: An implementation of 5-Card-Draw Poker.
+GitHub Link: https://github.com/zjnett/CptS-121-PA7
 ***************************************************/
 //Starting Code Authors: Deitel & Deitel - C How to Program
 //Starting Code copied from https://eecs.wsu.edu/~aofallon/cpts121/progassignments/main.c
 
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
+
+//Libraries
 #include <stdio.h>
+
+//Constants
 #define HAND_SIZE 6
 #define FACE_TYPES 13
 #define SUIT_TYPES 4
