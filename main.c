@@ -103,6 +103,15 @@ int main(void) {
 			printf("You are each dealt 5 cards in a hand, though the dealer's hand is dealt face-down.\n");
 			printf("Using poker game combinations, you may elect to discard and redraw up to 3 cards to create combinations.\n");
 			printf("Both hands are revealed and the player with the better hand wins the round.\n");
+			printf("Note that in this implementation, the house wins by default.\n");
+			printf("COMBINATIONS:\n");
+			printf("(in order of worst to best)\n");
+			printf("One Pair - Two cards of the same face\n");
+			printf("Two Pair - Four cards, two of the same face each\n");
+			printf("Three of a Kind - Three cards of the same face\n");
+			printf("Straight - Five cards of consecutive face values\n");
+			printf("Flush - Five cards of the same suit\n");
+			printf("Four of a Kind - Four cards of the same face\n");
 			pressKeyToContinue();
 			clearScreen();
 		} else if (input == 'Q') {
