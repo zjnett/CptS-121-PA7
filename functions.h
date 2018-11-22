@@ -20,7 +20,7 @@ typedef struct {
 } Card;
 
 void shuffle(int wDeck[][13]);
-void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card hand[]);
+void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card hand[], Card handTwo[]);
 void printHand(const char *wFace[], const char *wSuit[], Card hand[]);
 void calcNumTimes(Card hand[], int numTimes[13]);
 int containsPair(Card hand[], int numTimes[13]);
