@@ -29,6 +29,7 @@ void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card 
 	int row = 0;    /* row number */
 	int column = 0; /*column number */
 	int card = 0;   /* card counter */
+	int i = 1;
 
 					/* deals 10 cards */
 	for (card = 1; card <= 10; card++)
@@ -45,11 +46,12 @@ void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card 
 					//printf("%5s of %-8s%c", wFace[column], wSuit[row], card % 2 == 0 ? '\n' : '\t');
 					if (card % 2 == 0) {
 						//Player's card
-						hand[card].suitIndex = row;
-						hand[card].faceIndex = column;
+						hand[i].suitIndex = row;
+						hand[i].faceIndex = column;
+						i++;
 					} else {
-						handTwo[card].suitIndex = row;
-						handTwo[card].faceIndex = column;
+						handTwo[i].suitIndex = row;
+						handTwo[i].faceIndex = column;
 					}
 				}
 			}

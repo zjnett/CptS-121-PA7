@@ -21,7 +21,7 @@ int main(void) {
 	char input = '\0';
 
 	srand((unsigned)time(NULL)); /* seed random-number generator */
-	
+
 	do {
 		printMenu();
 		input = handleCharInput();
@@ -31,8 +31,6 @@ int main(void) {
 				clearScreen();
 				shuffle(deck);
 				deal(deck, face, suit, playerOneHand, playerTwoHand);
-				printf("DEALER'S HAND:\n");
-				printHand(face, suit, playerTwoHand);
 				printf("YOUR HAND:\n");
 				printHand(face, suit, playerOneHand);
 
@@ -57,17 +55,26 @@ int main(void) {
 				}
 				playerOneScore = evaluateHand(playerOneHand);
 				compCardsToDraw = dealerAI(playerTwoHand, playerOneScore, playerTwoScore);
+				printf("The dealer drew %d cards.\n", compCardsToDraw);
 				drawNCards(playerTwoHand, playerOneHand, compCardsToDraw);
 				playerTwoScore = evaluateHand(playerTwoHand);
 				if (playerOneScore > playerTwoScore) {
 					//player 1 has the better hand
 					printf("You won the hand!\n");
+					printf("YOUR HAND:\n");
+					printHand(face, suit, playerOneHand);
+					printf("\nDEALER'S HAND:\n");
+					printHand(face, suit, playerTwoHand);
 					playerScore++;
 
 				}
 				else if (playerTwoScore > playerOneScore || playerTwoScore == playerOneScore) {
 					//player 2 has the better hand (house always wins)
 					printf("The house won the hand.\n");
+					printf("YOUR HAND:\n");
+					printHand(face, suit, playerOneHand);
+					printf("\nDEALER'S HAND:\n");
+					printHand(face, suit, playerTwoHand);
 					houseScore++;
 				}
 
@@ -75,6 +82,7 @@ int main(void) {
 				reinitializeArrays(playerOneHand, playerTwoHand, deck);
 				numHands++;
 			}
+			clearScreen();
 		} else if (input == 'R') {
 			//Rules processings
 			clearScreen();
