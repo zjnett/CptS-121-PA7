@@ -48,13 +48,13 @@ int main(void) {
 						scanf("%d", &numCardsToDraw);
 					} while (numCardsToDraw > 3);
 					printHand(face, suit, playerOneHand);
-					drawNCardsPlayer(playerOneHand, numCardsToDraw, deck, &rowCount, &colCount);
+					drawNCardsPlayer(playerOneHand, playerTwoHand, numCardsToDraw);
 					printHand(face, suit, playerOneHand);
 				}
 				system("pause");
 				playerOneScore = evaluateHand(playerOneHand);
 				compCardsToDraw = dealerAI(playerTwoHand, playerOneScore, playerTwoScore);
-				drawNCards(playerTwoHand, compCardsToDraw, deck, rowCount, colCount);
+				drawNCards(playerTwoHand, playerOneHand, compCardsToDraw);
 				playerTwoScore = evaluateHand(playerTwoHand);
 				if (playerOneScore > playerTwoScore) {
 					//player 1 has the better hand

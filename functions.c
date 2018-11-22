@@ -171,6 +171,7 @@ void calcCountSuit(Card hand[], int suitCount[4]) {
 	}
 }
 
+//TODO: Fix this
 int containsFlush(Card hand[], int suitCount[4]) {
 	//Hand contains 5 of the same suit
 	for (int i = 0; i < SUIT_TYPES; i++) {
@@ -288,10 +289,12 @@ int dealerAI(Card hand[], int playerOneScore, int playerTwoScore) {
 	return 0;
 }
 
-void drawNCards(Card hand[], int n, int deck[4][13], int rowCount, int colCount) {
+void drawNCards(Card hand[], Card handTwo[], int n) {
 	int usedIndices[6] = { 0 };
-	int randIndex = 0, generating = 1;
+	int randIndex = 0, generating = 0, creatingCard = 0, face = 0, suit = 0;
+	//Generate random index to place card in
 	for (int i = 0; i < n; i++) {
+		generating = 1;
 		while (generating) {
 			randIndex = rand() % 5 + 1;
 			for (int j = 1; j < 6; j++) {
@@ -302,38 +305,52 @@ void drawNCards(Card hand[], int n, int deck[4][13], int rowCount, int colCount)
 				generating = 0;
 			}
 		}
+
+		creatingCard = 1;
+		while (creatingCard) {
+			generateCard(&face, &suit);
+			if (ifCardHasBeenDrawn(face, suit, hand, handTwo) == 0) {
+				creatingCard = 0;
+			}
+		}
 		usedIndices[randIndex] = 1;
-		hand[randIndex].faceIndex = deck[colCount--];
-		hand[randIndex].suitIndex = deck[rowCount--];
+		hand[randIndex].faceIndex = face;
+		hand[randIndex].suitIndex = suit;
 	}
 }
 
-void drawNCardsPlayer(Card hand[], int n, int deck[4][13], int *rowCount, int *colCount) {
-	int input = 0, face = 0, suit = 0;
+void drawNCardsPlayer(Card hand[], Card handTwo[], int n) {
+	int input = 0, face = 0, suit = 0, generating = 0;
 	for (int i = 0; i < n; i++) {
+		generating = 1;
+		while (generating) {
+			generateCard(&face, &suit);
+			if (ifCardHasBeenDrawn(face, suit, hand, handTwo) == 0) {
+				generating = 0;
+			}
+		}
 		printf("What card would you like to redraw? 1-5: ");
 		scanf("%d", &input);
 		switch (input) {
 		case 1:
-			drawCard(deck, &face, &suit);
 			hand[1].faceIndex = face;
 			hand[1].suitIndex = suit;
 			break;
 		case 2:
-			hand[2].faceIndex = deck[*colCount--];
-			hand[2].suitIndex = deck[*rowCount--];
+			hand[2].faceIndex = face;
+			hand[2].suitIndex = suit;
 			break;
 		case 3:
-			hand[3].faceIndex = deck[*colCount--];
-			hand[3].suitIndex = deck[*rowCount--];
+			hand[3].faceIndex = face;
+			hand[3].suitIndex = suit;
 			break;
 		case 4:
-			hand[4].faceIndex = deck[*colCount--];
-			hand[4].suitIndex = deck[*rowCount--];
+			hand[4].faceIndex = face;
+			hand[4].suitIndex = suit;
 			break;
 		case 5:
-			hand[5].faceIndex = deck[*colCount--];
-			hand[5].suitIndex = deck[*rowCount--];
+			hand[5].faceIndex = face;
+			hand[5].suitIndex = suit;
 			break;
 		}
 	}
@@ -343,8 +360,13 @@ int ifCardHasBeenDrawn(int desiredFace, int desiredSuit, Card handOne[], Card ha
 	//Check through first hand
 	for (int i = 1; i < 6; i++) {
 		if ((handOne[i].faceIndex == desiredFace && handOne[i].suitIndex == desiredSuit) || (handTwo[i].faceIndex == desiredFace && handTwo[i].suitIndex == desiredSuit)) {
-			return 0;
+			return 1;
 		}
 	}
-	return 1;
+	return 0;
+}
+
+void generateCard(int *face, int *suit) {
+	*face = rand() % 13;
+	*suit = rand() % 4;
 }
