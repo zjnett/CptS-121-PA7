@@ -54,19 +54,25 @@ int main(void) {
 					printHand(face, suit, playerOneHand);
 					drawNCardsPlayer(playerOneHand, playerTwoHand, numCardsToDraw);
 					printHand(face, suit, playerOneHand);
+					playerOneScore = evaluateHand(playerOneHand);
+					printf("Points: %d\n", playerOneScore);
 				}
-				playerOneScore = evaluateHand(playerOneHand);
 				compCardsToDraw = dealerAI(playerTwoHand, playerOneScore, playerTwoScore);
+				clearScreen();
 				printf("The dealer drew %d cards.\n", compCardsToDraw);
 				drawNCards(playerTwoHand, playerOneHand, compCardsToDraw);
 				playerTwoScore = evaluateHand(playerTwoHand);
+				pressKeyToContinue();
+				clearScreen();
 				if (playerOneScore > playerTwoScore) {
 					//player 1 has the better hand
 					printf("You won the hand!\n");
 					printf("YOUR HAND:\n");
 					printHand(face, suit, playerOneHand);
+					printf("Points: %d\n", playerOneScore);
 					printf("\nDEALER'S HAND:\n");
 					printHand(face, suit, playerTwoHand);
+					printf("Points: %d\n", playerTwoScore);
 					playerScore++;
 					printf("\nPlayer Score: %d\tHouse Score: %d\n", playerScore, houseScore);
 
@@ -76,8 +82,10 @@ int main(void) {
 					printf("The house won the hand.\n");
 					printf("YOUR HAND:\n");
 					printHand(face, suit, playerOneHand);
+					printf("Points: %d\n", playerOneScore);
 					printf("\nDEALER'S HAND:\n");
 					printHand(face, suit, playerTwoHand);
+					printf("Points: %d\n", playerTwoScore);
 					houseScore++;
 					printf("\nPlayer Score: %d\tHouse Score: %d\n", playerScore, houseScore);
 				}
@@ -89,6 +97,13 @@ int main(void) {
 			clearScreen();
 		} else if (input == 'R') {
 			//Rules processings
+			clearScreen();
+			printf("Five Card Draw Poker is a card game.\n");
+			printf("You are player one, and the computer (dealer) is player two.\n");
+			printf("You are each dealt 5 cards in a hand, though the dealer's hand is dealt face-down.\n");
+			printf("Using poker game combinations, you may elect to discard and redraw up to 3 cards to create combinations.\n");
+			printf("Both hands are revealed and the player with the better hand wins the round.\n");
+			pressKeyToContinue();
 			clearScreen();
 		} else if (input == 'Q') {
 			running = 0;
