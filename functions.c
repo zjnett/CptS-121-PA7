@@ -194,6 +194,11 @@ int containsStraight(Card hand[], int numTimes[13]) {
 			count = 0;
 		}
 	}
+
+	if (count == 5) {
+		return 1;
+	}
+
 	return 0;
 }
 
