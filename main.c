@@ -22,6 +22,8 @@ int main(void) {
 
 	srand((unsigned)time(NULL)); /* seed random-number generator */
 
+	system("color 2F"); /* sets color of game to green background, white text */
+
 	do {
 		printMenu();
 		input = handleCharInput();
@@ -66,6 +68,7 @@ int main(void) {
 					printf("\nDEALER'S HAND:\n");
 					printHand(face, suit, playerTwoHand);
 					playerScore++;
+					printf("\nPlayer Score: %d\tHouse Score: %d\n", playerScore, houseScore);
 
 				}
 				else if (playerTwoScore > playerOneScore || playerTwoScore == playerOneScore) {
@@ -76,6 +79,7 @@ int main(void) {
 					printf("\nDEALER'S HAND:\n");
 					printHand(face, suit, playerTwoHand);
 					houseScore++;
+					printf("\nPlayer Score: %d\tHouse Score: %d\n", playerScore, houseScore);
 				}
 
 				pressKeyToContinue();
