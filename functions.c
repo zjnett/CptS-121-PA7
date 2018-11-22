@@ -188,8 +188,10 @@ int containsStraight(Card hand[], int numTimes[13]) {
 	for (int i = 0; i < FACE_TYPES; i++) {
 		if (numTimes[i] == 1) {
 			count++;
-		} else if (count == 5) {
+		} else if (numTimes[i] == 0 && count == 5) {
 			return 1;
+		} else {
+			count = 0;
 		}
 	}
 	return 0;

@@ -43,6 +43,7 @@ int main(void) {
 				if (input == 'Y') {
 					do {
 						clearScreen();
+						printHand(face, suit, playerOneHand);
 						printf("How many cards would you like to redraw? (max of 3): ");
 						scanf("%d", &numCardsToDraw);
 					} while (numCardsToDraw > 3);
@@ -50,7 +51,7 @@ int main(void) {
 					drawNCardsPlayer(playerOneHand, numCardsToDraw, deck, &rowCount, &colCount);
 					printHand(face, suit, playerOneHand);
 				}
-
+				system("pause");
 				playerOneScore = evaluateHand(playerOneHand);
 				compCardsToDraw = dealerAI(playerTwoHand, playerOneScore, playerTwoScore);
 				drawNCards(playerTwoHand, compCardsToDraw, deck, rowCount, colCount);
