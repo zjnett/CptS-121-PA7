@@ -13,12 +13,14 @@ Purpose: An implementation of 5-Card-Draw Poker.
 #define HAND_SIZE 6
 #define FACE_TYPES 13
 #define SUIT_TYPES 4
+
 //Datatype Initialization
 typedef struct {
 	int faceIndex;
 	int suitIndex;
 } Card;
 
+//Function Prototypes
 void shuffle(int wDeck[][13]);
 void deal(const int wDeck[][13], const char *wFace[], const char *wSuit[], Card hand[], Card handTwo[]);
 void printHand(const char *wFace[], const char *wSuit[], Card hand[]);
