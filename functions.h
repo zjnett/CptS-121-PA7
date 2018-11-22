@@ -39,5 +39,6 @@ void reinitializeArrays(Card handOne[], Card handTwo[], int deck[4][13]);
 int dealerAI(Card hand[], int playerOneScore, int playerTwoScore);
 void drawNCards(Card hand[], int n, int deck[4][13], int rowCount, int colCount);
 void drawNCardsPlayer(Card hand[], int n, int deck[4][13], int *rowCount, int *colCount);
+void drawCard(int deck[4][13], int *face, int *suit);
 
 #endif

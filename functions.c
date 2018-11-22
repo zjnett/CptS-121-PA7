@@ -309,14 +309,15 @@ void drawNCards(Card hand[], int n, int deck[4][13], int rowCount, int colCount)
 }
 
 void drawNCardsPlayer(Card hand[], int n, int deck[4][13], int *rowCount, int *colCount) {
-	int input = 0;
+	int input = 0, face = 0, suit = 0;
 	for (int i = 0; i < n; i++) {
 		printf("What card would you like to redraw? 1-5: ");
 		scanf("%d", &input);
 		switch (input) {
 		case 1:
-			hand[1].faceIndex = deck[*colCount--];
-			hand[1].suitIndex = deck[*rowCount--];
+			drawCard(deck, &face, &suit);
+			hand[1].faceIndex = face;
+			hand[1].suitIndex = suit;
 			break;
 		case 2:
 			hand[2].faceIndex = deck[*colCount--];
@@ -336,4 +337,14 @@ void drawNCardsPlayer(Card hand[], int n, int deck[4][13], int *rowCount, int *c
 			break;
 		}
 	}
+}
+
+int ifCardHasBeenDrawn(int desiredFace, int desiredSuit, Card handOne[], Card handTwo[]) {
+	//Check through first hand
+	for (int i = 1; i < 6; i++) {
+		if ((handOne[i].faceIndex == desiredFace && handOne[i].suitIndex == desiredSuit) || (handTwo[i].faceIndex == desiredFace && handTwo[i].suitIndex == desiredSuit)) {
+			return 0;
+		}
+	}
+	return 1;
 }
